@@ -1,11 +1,12 @@
 #include "framework/Application.h"
 #include "framework/Core.h"
-
+#include "framework/World.h"
 namespace ly {
 	Application::Application()
 		: mWindow{ sf::VideoMode(1014, 1440), "MyWindow" },
 		mTargetFrameRate(60.f),
-		mTickClock{}
+		mTickClock{},
+		currentWorld{nullptr}
 	{
 
 	}
@@ -24,20 +25,28 @@ namespace ly {
 				}
 			}
 			float frameDeltaTime = mTickClock.restart().asSeconds();
-			accumulatedTime += mTickClock.restart().asSeconds();
+			accumulatedTime += frameDeltaTime;
 			while(accumulatedTime > targetDeltaTime) 
 			{
 				accumulatedTime -= targetDeltaTime;
 				TickInternal(targetDeltaTime);
 				RenderInternal();
 			}
-			LOG("ticking at framerate: %f\n", 1.f / frameDeltaTime);
+			
 		}
 	}
 	
 
 	void Application::TickInternal(float deltaTime) {
+
 		Tick(deltaTime);
+
+		if (currentWorld)
+		{
+			//currentWorld->BeginPlayInternal();
+			currentWorld->TickInternal(deltaTime);
+		}
+	
 	}
 
 
