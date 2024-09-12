@@ -1,4 +1,5 @@
 #pragma once
+#include <SFML/Graphics.hpp>
 #include <framework/Core.h>
 #include "framework/Actor.h"
 namespace ly 
@@ -11,6 +12,7 @@ namespace ly
 		World(Application* owningApp);
 		void BeginPlayInternal();
 		void TickInternal(float deltaTime);
+		void Render(sf::RenderWindow& window);
 
 		virtual ~World();
 
