@@ -1,6 +1,7 @@
 #include "gameFramework/gameApplication.h"
 #include "framework/World.h"
 #include "framework/Actor.h"
+#include "config.h"
 ly::Application* GetApplication() 
 {
 	return new ly::GameApplication;
