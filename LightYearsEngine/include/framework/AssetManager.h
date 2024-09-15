@@ -10,6 +10,8 @@ namespace ly
 	public:
 		static AssetManager& Get();
 		shared<sf::Texture> LoadTexture(const std::string& path);
+		//clean assets we dont need anymore
+		void CleanCycle();
 	protected:
 		AssetManager();
 	private:

@@ -23,6 +23,8 @@ namespace ly {
 		sf::Clock mTickClock;
 
 		shared<World> currentWorld;
+		sf::Clock mCleanCycleClock;
+		float mCleanCycleInterval;
 	};
 
 	template<typename WorldType>
