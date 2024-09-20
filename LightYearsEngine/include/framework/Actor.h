@@ -27,10 +27,15 @@ namespace ly
 		float GetActorRotation() const;
 		sf::Vector2f GetActorForwardDirection()const;
 		sf::Vector2f GetActorRightDirection() const;
+		sf::FloatRect GetActorGlobalBounds() const;
 
 		sf::Vector2u GetWindowSize() const;
 
 		World* GetWorld()const { return mOwningWorld; }
+
+		bool IsActorOutOfWindowBounds() const;
+
+
 	private:
 		void CenterPivot();
 		World* mOwningWorld;
