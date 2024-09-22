@@ -3,10 +3,11 @@
 
 #include "framework/Core.h"
 #include "framework/Object.h"
-
+class b2Body;
 namespace ly
 {
 	class World;
+	
 	class Actor : public Object
 	{
 	public:
@@ -35,13 +36,21 @@ namespace ly
 
 		bool IsActorOutOfWindowBounds() const;
 
-
+		void SetEnablePhysics(bool enable);
+		virtual void OnActorBeginOverlap(Actor* other);
+		virtual void OnActorEndOverlap(Actor* other);
 	private:
+		void InitializePhysics();
+		void UninitializePhysics();
 		void CenterPivot();
+		void UpdatePhysicsBodyTransform();
 		World* mOwningWorld;
 		bool mHasBeganPlay;
 
 		sf::Sprite mSprite;
 		shared<sf::Texture> mTexture;
+
+		b2Body* mPhysicsBody;
+		bool mPhysicsEnabled;
 	};
 }

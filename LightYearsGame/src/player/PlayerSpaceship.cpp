@@ -29,6 +29,13 @@ namespace ly
 		}
 	}
 
+	void PlayerSpaceship::BeginPlay()
+	{
+		Actor::BeginPlay();
+
+		SetEnablePhysics(true);
+	}
+
 	void PlayerSpaceship::HandleInput()
 	{
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
