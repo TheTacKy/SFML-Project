@@ -13,5 +13,6 @@ namespace ly
 	private:
 		//float counter;
 		weak<PlayerSpaceship> testPlayerSpaceship;
+		float counter;
 	};
 }

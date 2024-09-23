@@ -1,7 +1,7 @@
-#include <box2D/b2_body.h>
+#include <box2d/b2_body.h>
+#include <box2d/b2_contact.h>
 #include <box2d/b2_fixture.h>
 #include <box2d/b2_polygon_shape.h>
-#include <box2D/b2_contact.h>
 
 #include "framework/PhysicsSystem.h"
 #include "framework/Actor.h"
@@ -20,8 +20,12 @@ namespace ly
 	}
 
 	void PhysicsSystem::Step(float deltaTime)
-	{	//box2d functions
+	{	
+		ProcessPendingRemoveListeners();
+		
+		//box2d functions
 		//how flequently you want to update it
+
 		mPhysicsWorld.Step(deltaTime, mVelocityIterations, mPositionIterations);
 	}
 
@@ -58,7 +62,12 @@ namespace ly
 
 	void PhysicsSystem::RemoveListener(b2Body* bodyToRemove)
 	{
-		//TODO: implement removal of physics body
+		mPendingRemoveListeners.insert(bodyToRemove);
+	}
+
+	void PhysicsSystem::CleanUp()
+	{
+		physicsSystem = std::move(unique<PhysicsSystem>{new PhysicsSystem});
 	}
 
 	PhysicsSystem::PhysicsSystem()
@@ -66,10 +75,21 @@ namespace ly
 		mPhysicsScale{0.01f},
 		mVelocityIterations{8},
 		mPositionIterations{3},
-		mContactListener{}
+		mContactListener{},
+		mPendingRemoveListeners{}
 	{
 		mPhysicsWorld.SetContactListener(&mContactListener);
 		mPhysicsWorld.SetAllowSleeping(false);
+	}
+
+	void PhysicsSystem::ProcessPendingRemoveListeners()
+	{
+		for (auto listener : mPendingRemoveListeners)
+		{
+			mPhysicsWorld.DestroyBody(listener);
+		}
+		mPendingRemoveListeners.clear();
+
 	}
 	
 	
@@ -99,7 +119,7 @@ namespace ly
 	
 		if (contact->GetFixtureB() && contact->GetFixtureB()->GetBody())
 		{
-			ActorB = reinterpret_cast<Actor*>(contact->GetFixtureA()->GetBody()->GetUserData().pointer);
+			ActorB = reinterpret_cast<Actor*>(contact->GetFixtureB()->GetBody()->GetUserData().pointer);
 		}
 
 		if (ActorA && !ActorA->IsPendingDestroy())

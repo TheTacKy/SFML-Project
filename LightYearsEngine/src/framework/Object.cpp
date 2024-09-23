@@ -15,5 +15,6 @@ namespace ly
 	void Object::Destroy()
 	{
 		mIsPendingDestroy = true;
+
 	}
 }
