@@ -88,8 +88,8 @@ namespace ly
 		{
 			mPhysicsWorld.DestroyBody(listener);
 		}
+		
 		mPendingRemoveListeners.clear();
-
 	}
 	
 	

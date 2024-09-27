@@ -31,8 +31,22 @@ namespace ly
 		return shared<sf::Texture> {nullptr};
 	}
 
+	void AssetManager::UnloadTexture(const std::string& path)
+	{
+		auto found = mLoadedTextureMap.find(path);
+		if (found != mLoadedTextureMap.end())
+		{
+			if (found->second.unique())
+			{
+				LOG("unloading texture: %s", path.c_str());
+				mLoadedTextureMap.erase(found);
+			}
+		}
+	}
+
 	void AssetManager::CleanCycle()
 	{
+		
 		for (auto iter = mLoadedTextureMap.begin(); iter != mLoadedTextureMap.end();)
 		{
 			if(iter->second.unique())

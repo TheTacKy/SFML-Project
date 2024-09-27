@@ -26,6 +26,14 @@ add_library(${LIGHT_YEARS_ENGINE_TARGET_NAME} STATIC
     ${CMAKE_CURRENT_SOURCE_DIR}/include/framework/PhysicsSystem.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/framework/PhysicsSystem.cpp
 
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/framework/TimerManager.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/framework/TimerManager.cpp
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/VFX/Particle.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/VFX/Particle.cpp
+
+
+
     ${CMAKE_CURRENT_SOURCE_DIR}/include/EntryPoint.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/EntryPoint.cpp
 )

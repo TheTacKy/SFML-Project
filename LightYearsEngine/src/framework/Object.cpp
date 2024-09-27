@@ -10,10 +10,11 @@ namespace ly
 
 	Object::~Object()
 	{
-		LOG("Object Destroyed");
+		//LOG("Object Destoryed");
 	}
 	void Object::Destroy()
 	{
+		
 		onDestroy.Broadcast(this);
 		mIsPendingDestroy = true;
 

@@ -12,18 +12,18 @@ namespace ly
 	{
 	public:
 		template<typename ClassName>
-		void BindAction(weak<Object> obj, void(ClassName::*callback)(Args...))
+		void BindAction(weak<Object> obj, void(ClassName::* callback)(Args...))
 		{
 			std::function<bool(Args...)> callbackFunc = [obj, callback](Args... args)->bool
-			{
-				if (!obj.expired())
 				{
-					(static_cast<ClassName*>(obj.lock().get())->*callback)(args...);
-					return true;
-				}
+					if (!obj.expired())
+					{
+						(static_cast<ClassName*>(obj.lock().get())->*callback)(args...);
+						return true;
+					}
 
-				return false;
-			};
+					return false;
+				};
 
 			mCallbacks.push_back(callbackFunc);
 		}

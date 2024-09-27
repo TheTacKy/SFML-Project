@@ -60,6 +60,7 @@ namespace ly {
 
 	void World::CleanCycle()
 	{
+		
 		for (auto iter = mActors.begin(); iter != mActors.end();)
 		{
 			if (iter->get()->IsPendingDestroy())
@@ -71,7 +72,6 @@ namespace ly {
 				++iter;
 			}
 		}
-		
 	}
 
 	void World::BeginPlay()

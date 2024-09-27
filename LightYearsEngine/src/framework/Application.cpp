@@ -4,15 +4,16 @@
 #include "framework/AssetManager.h"
 #include "framework/PhysicsSystem.h"
 
-namespace ly {
+namespace ly 
+{
 	
 	Application::Application(unsigned int windowWidth, unsigned int windowHeight, const std::string& title, sf::Uint32 style)
 		: mWindow{ sf::VideoMode(windowWidth, windowHeight), title, style },
 		mTargetFrameRate(60.f),
 		mTickClock{},
-		currentWorld{ nullptr },
+		mCurrentWorld{ nullptr },
 		mCleanCycleClock{},
-		mCleanCycleInterval{2.f}
+		mCleanCycleInterval{5.f}
 	{
 
 	}
@@ -52,10 +53,10 @@ namespace ly {
 
 		Tick(deltaTime);
 
-		if (currentWorld)
+		if (mCurrentWorld)
 		{
-			//currentWorld->BeginPlayInternal();
-			currentWorld->TickInternal(deltaTime);
+
+			mCurrentWorld->TickInternal(deltaTime);
 		}
 
 		PhysicsSystem::Get().Step(deltaTime);
@@ -63,12 +64,15 @@ namespace ly {
 		if (mCleanCycleClock.getElapsedTime().asSeconds() >= mCleanCycleInterval)
 		{
 			mCleanCycleClock.restart();
-			AssetManager::Get().CleanCycle();
-			if (currentWorld)
-			{
-				currentWorld->CleanCycle();
-			}
+			AssetManager::Get().CleanCycle(); 
+			
+			
 		}
+		if (mCurrentWorld)
+		{
+			mCurrentWorld->CleanCycle();
+		}
+		
 	}
 
 
@@ -81,9 +85,9 @@ namespace ly {
 	}
 
 	void Application::Render() {
-		if(currentWorld) 
+		if(mCurrentWorld)
 		{
-			currentWorld->Render(mWindow);
+			mCurrentWorld->Render(mWindow);
 		}
 	}
 	void Application::Tick(float deltaTime) {
