@@ -79,7 +79,9 @@ namespace ly {
 		SetActorLocation(GetActorLocation() + offsetAmt);
 	}
 
-	void Actor::AddActorLocationOffset(float offsetAmt)
+	
+
+	void Actor::AddActorRotationOffset(float offsetAmt)
 	{
 		SetActorRotation(GetActorRotation() + offsetAmt);
 	}

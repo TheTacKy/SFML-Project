@@ -61,7 +61,7 @@ namespace ly
 			mCurrentWorld->TickInternal(deltaTime);
 		}
 
-		TimerManager::Get().UpdateTime(deltaTime);
+		TimerManager::Get().UpdateTimer(deltaTime);
 
 		PhysicsSystem::Get().Step(deltaTime);
 

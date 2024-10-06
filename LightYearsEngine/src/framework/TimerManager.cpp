@@ -2,32 +2,19 @@
 
 namespace ly
 {
-	unique<TimerManager> TimerManager::timerManager{nullptr};
+	unsigned int TimerHandle::timerKeyCounter = 0;
 
-	
-
-	TimerManager::TimerManager()
-		: mTimers{}
+	TimerHandle::TimerHandle()
+		: mTimerKey{ GetNextTimerKey() }
 	{
 
 	}
-
-	TimerManager& TimerManager::Get()
-	{
-		if (!timerManager)
-		{
-			timerManager = std::move(unique<TimerManager>(new TimerManager{}));
-		}
-		return *timerManager;
-	}
-
-	
 	Timer::Timer(weak<Object> weakRef, std::function<void()> callback, float duration, bool repeat)
-		: mListener{weakRef, callback},
+		: mListener{ weakRef, callback },
 		mDuration{ duration },
 		mRepeat{ repeat },
-		mTimeCounter{0.f},
-		mIsExpired{false}
+		mTimeCounter{ 0.f },
+		mIsExpired{ false }
 	{
 
 	}
@@ -38,10 +25,12 @@ namespace ly
 		{
 			return;
 		}
+
 		mTimeCounter += deltaTime;
 		if (mTimeCounter >= mDuration)
 		{
 			mListener.second();
+
 			if (mRepeat)
 			{
 				mTimeCounter = 0.f;
@@ -55,7 +44,7 @@ namespace ly
 
 	bool Timer::Expired() const
 	{
-		return mIsExpired || mListener.first.expired() || mListener.first.lock()->IsPendingDestroy(); 
+		return mIsExpired || mListener.first.expired() || mListener.first.lock()->IsPendingDestroy();
 	}
 
 	void Timer::SetExpired()
@@ -63,11 +52,48 @@ namespace ly
 		mIsExpired = true;
 	}
 
-	void TimerManager::UpdateTime(float deltaTime)
+	unique<TimerManager> TimerManager::timerManager{ nullptr };
+
+	TimerManager::TimerManager() : mTimers{}
 	{
-		for (Timer& timer : mTimers)
+	}
+	TimerManager& TimerManager::Get()
+	{
+		if (!timerManager)
 		{
-			timer.TickTime(deltaTime);
+			timerManager = std::move(unique<TimerManager>(new TimerManager{}));
+		}
+
+		return *timerManager;
+	}
+
+	void TimerManager::UpdateTimer(float deltaTime)
+	{
+		for (auto iter = mTimers.begin(); iter != mTimers.end();)
+		{
+			if (iter->second.Expired())
+			{
+				iter = mTimers.erase(iter);
+			}
+			else
+			{
+				iter->second.TickTime(deltaTime);
+				++iter;
+			}
+		}
+	}
+
+	bool operator==(const TimerHandle& lhs, const TimerHandle& rhs)
+	{
+		return lhs.GetTimerKey() == rhs.GetTimerKey();
+	}
+
+	void TimerManager::ClearTimer(TimerHandle timerHandle)
+	{
+		auto iter = mTimers.find(timerHandle);
+		if (iter != mTimers.end())
+		{
+			iter->second.SetExpired();
 		}
 	}
 }

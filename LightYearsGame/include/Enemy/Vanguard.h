@@ -7,7 +7,7 @@ namespace ly
 	class Vanguard : public EnemySpaceship
 	{
 	public:
-		Vanguard(World* owningWorld, const std::string& texturePath = "SpaceShooterRedux/PNG/Enemies/enemyBlue3.png", const sf::Vector2f& velocity = {0.f, 40});
+		Vanguard(World* owningWorld, const std::string& texturePath = "SpaceShooterRedux/PNG/Enemies/enemyBlue3.png", const sf::Vector2f& velocity = {0.f, 150});
 		virtual void Tick(float deltaTime) override;
 	private:
 		virtual void Shoot() override;
