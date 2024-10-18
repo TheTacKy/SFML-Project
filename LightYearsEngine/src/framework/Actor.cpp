@@ -21,7 +21,7 @@ namespace ly {
 	}
 
 	Actor::~Actor() {
-		//LOG("Actor Destroyed");
+		LOG("Actor Destroyed");
 	}
 	void Actor::BeginPlayInternal()
 	{
@@ -59,6 +59,7 @@ namespace ly {
 
 	void Actor::Render(sf::RenderWindow& window)
 	{
+		if (IsPendingDestroy()) return;
 		window.draw(mSprite);
 	}
 
@@ -173,7 +174,6 @@ namespace ly {
 	void Actor::Destroy()
 	{
 		UninitializePhysics();
-		
 		Object::Destroy();
 	}
 

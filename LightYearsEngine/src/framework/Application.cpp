@@ -70,12 +70,12 @@ namespace ly
 			mCleanCycleClock.restart();
 			AssetManager::Get().CleanCycle(); 
 			
-			
+			if (mCurrentWorld)
+			{
+				mCurrentWorld->CleanCycle();
+			}
 		}
-		if (mCurrentWorld)
-		{
-			mCurrentWorld->CleanCycle();
-		}
+		
 		
 	}
 

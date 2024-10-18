@@ -2,8 +2,8 @@
 #include "SFML/System.hpp"
 #include "framework/MathUtility.h"
 #include "weapon/BulletShooter.h"
-//#include "weapon/ThreeWayShooter.h"
-//#include "weapon/FrontalWiper.h"
+#include "weapon/ThreeWayShooter.h"
+#include "weapon/FrontalWiper.h"
 
 namespace ly
 {
@@ -29,6 +29,19 @@ namespace ly
 		{
 			mShooter->Shoot();
 		}
+	}
+
+	void PlayerSpaceship::SetShooter(unique<Shooter>&& newShooter)
+	{
+		//check if they are the same
+		if (mShooter && typeid(*mShooter.get()) == typeid(*newShooter.get()))
+		{
+			mShooter->IncrementLevel();
+			return;
+		}
+		//else change shooter
+
+		mShooter = std::move(newShooter);
 	}
 
 	

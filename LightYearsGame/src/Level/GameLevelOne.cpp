@@ -12,6 +12,8 @@
 #include "Enemy/Hexagon.h"
 #include "Enemy/HexagonStage.h"
 #include "Enemy/UFO.h"
+#include "Enemy/UFOStage.h"
+
 
 #include "gameplay/WaitStage.h"
 #include "gameplay/GameStage.h"
@@ -29,12 +31,14 @@ namespace ly
 
 	void GameLevelOne::BeginPlay()
 	{
-		weak<UFO> hexagon = SpawnActor<UFO>(sf::Vector2f{ 0.f, 0.f });
-		hexagon.lock()->SetActorLocation({ GetWindowSize().x / 2.f, GetWindowSize().y / 2.f });
+		
 	}
 
 	void GameLevelOne::InitGameStages()
 	{
+
+		AddStage(shared<UFOStage>{new UFOStage{ this }});
+
 		AddStage(shared<WaitStage>{new WaitStage{ this, 5.f }});
 		AddStage(shared<VanguardStage>{new VanguardStage{ this }});
 

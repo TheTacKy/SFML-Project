@@ -21,7 +21,7 @@ namespace ly
 		virtual void OnHealthChanged(float amt, float health, float maxHealth);
 		virtual void OnTakenDamage(float amt, float health, float maxHealth);
 		void Blow();
-		//virtual void Blew();
+		virtual void Blew();
 		sf::Vector2f mVelocity;
 		HealthComponent mHealthComp;
 

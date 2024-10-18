@@ -5,8 +5,14 @@ add_EXECUTABLE(${LIGHT_YEARS_GAME_TARGET_NAME}
     ${CMAKE_CURRENT_SOURCE_DIR}/include/spaceship/Spaceship.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/spaceship/Spaceship.cpp
 
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/player/Player.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/player/Player.cpp
+
     ${CMAKE_CURRENT_SOURCE_DIR}/include/player/PlayerSpaceship.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/player/PlayerSpaceship.cpp
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/player/Reward.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/player/Reward.cpp
 
     ${CMAKE_CURRENT_SOURCE_DIR}/include/weapon/BulletShooter.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/weapon/BulletShooter.cpp
@@ -16,6 +22,12 @@ add_EXECUTABLE(${LIGHT_YEARS_GAME_TARGET_NAME}
 
     ${CMAKE_CURRENT_SOURCE_DIR}/include/weapon/Bullet.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/weapon/Bullet.cpp
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/weapon/ThreeWayShooter.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/weapon/ThreeWayShooter.cpp
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/weapon/FrontalWiper.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/weapon/FrontalWiper.cpp
 
     ${CMAKE_CURRENT_SOURCE_DIR}/include/gameplay/HealthComponent.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/gameplay/HealthComponent.cpp
@@ -46,6 +58,9 @@ add_EXECUTABLE(${LIGHT_YEARS_GAME_TARGET_NAME}
 
     ${CMAKE_CURRENT_SOURCE_DIR}/include/Enemy/UFO.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/Enemy/UFO.cpp
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/Enemy/UFOStage.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/Enemy/UFOStage.cpp
 
     ${CMAKE_CURRENT_SOURCE_DIR}/include/Level/GameLevelOne.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/Level/GameLevelOne.cpp
