@@ -15,20 +15,12 @@ namespace ly
 
 	shared<sf::Texture> AssetManager::LoadTexture(const std::string& path)
 	{
-		//use the dictionary/map to see if we already have the asset loaded
-		auto found = mLoadedTextureMap.find(path);
-		if (found != mLoadedTextureMap.end())
-		{
-			//return texture if found
-			return found->second;
-		}
-		shared<sf::Texture> newTexture{new sf::Texture};
-		if (newTexture->loadFromFile(mRootDirectory + path)) 
-		{
-			mLoadedTextureMap.insert({path, newTexture});
-			return newTexture;
-		}
-		return shared<sf::Texture> {nullptr};
+		return LoadAsset(path, mLoadedTextureMap);
+	}
+
+	shared<sf::Font> AssetManager::LoadFont(const std::string& path)
+	{
+		return LoadAsset(path, mLoadedFontMap);
 	}
 
 	void AssetManager::UnloadTexture(const std::string& path)
@@ -46,19 +38,8 @@ namespace ly
 
 	void AssetManager::CleanCycle()
 	{
-		
-		for (auto iter = mLoadedTextureMap.begin(); iter != mLoadedTextureMap.end();)
-		{
-			if(iter->second.unique())
-			{ 
-				LOG("cleaning texture: %s", iter->first.c_str());
-				iter = mLoadedTextureMap.erase(iter);
-			}
-			else
-			{
-				++iter;
-			}
-		}
+		CleanUniqueRef(mLoadedFontMap);
+		CleanUniqueRef(mLoadedTextureMap);
 	}
 
 	void AssetManager::SetAssetRootDirectory(const std::string& directory)

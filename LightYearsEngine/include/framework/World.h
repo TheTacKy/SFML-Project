@@ -8,6 +8,7 @@ namespace ly
 {
 	class Actor;
 	class Application;
+	class HUD;
 	class GameStage;
 	class World : public Object
 	{
@@ -39,6 +40,12 @@ namespace ly
 
 		List<shared<GameStage>>::iterator mCurrentStage;
 
+		shared<HUD> mHUD;
+
+		template<typename HUDType, typename... Args>
+		weak<HUD> SpawnHUD(Args... args);
+
+
 		virtual void AllGameStageFinished();
 		virtual void InitGameStages();
 		void NextGameStage();
@@ -54,6 +61,14 @@ namespace ly
 		shared<ActorType> newActor{ new ActorType(this, args...) };
 		mPendingActors.push_back(newActor);
 		return newActor;
+	}
+
+	template<typename HUDType, typename ...Args>
+	inline weak<HUD> World::SpawnHUD(Args ...args)
+	{
+		shared<HUDType> newHUD{ new HUDType(args...) };
+		mHUD = newHUD;
+		return newHUD;
 	}
 
 }

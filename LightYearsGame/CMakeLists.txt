@@ -8,6 +8,9 @@ add_EXECUTABLE(${LIGHT_YEARS_GAME_TARGET_NAME}
     ${CMAKE_CURRENT_SOURCE_DIR}/include/player/Player.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/player/Player.cpp
 
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/player/PlayerManager.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/player/PlayerManager.cpp
+
     ${CMAKE_CURRENT_SOURCE_DIR}/include/player/PlayerSpaceship.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/player/PlayerSpaceship.cpp
 

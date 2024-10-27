@@ -13,6 +13,7 @@ namespace ly
 	GameApplication::GameApplication()
 		: Application {600, 980, "Light Years", sf::Style::Titlebar | sf::Style::Close}
 	{
+		//Calls the config file to set up Asset directory
 		AssetManager::Get().SetAssetRootDirectory(GetResourceDir());
 		weak<GameLevelOne> newWorld = LoadWorld<GameLevelOne>();
 	}
