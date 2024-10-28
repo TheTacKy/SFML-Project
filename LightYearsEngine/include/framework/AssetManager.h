@@ -1,29 +1,23 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+
 #include "framework/Core.h"
 
 namespace ly
 {
-	//singleton
 	class AssetManager
 	{
 	public:
 		static AssetManager& Get();
 		shared<sf::Texture> LoadTexture(const std::string& path);
-
 		shared<sf::Font> LoadFont(const std::string& path);
-
-		void UnloadTexture(const std::string& path);
-		//clean assets we dont need anymore
 		void CleanCycle();
 		void SetAssetRootDirectory(const std::string& directory);
 	protected:
 		AssetManager();
 	private:
-		//Called by LoadTexture and LoadFont to simplify
 		template<typename T>
-		shared<T> LoadAsset(const std::string& path, Dictionary<std::string, shared<T>>& container);
-
+		shared<T> LoadAsset(const std::string& path, Dictionary<std::string, shared<T>>& constainer);
 		static unique<AssetManager> assetManager;
 		Dictionary<std::string, shared<sf::Texture>> mLoadedTextureMap;
 		Dictionary<std::string, shared<sf::Font>> mLoadedFontMap;
@@ -31,27 +25,27 @@ namespace ly
 
 		template<typename T>
 		void CleanUniqueRef(Dictionary<std::string, shared<T>>& container);
+
 	};
 
-
 	template<typename T>
-	inline shared<T> AssetManager::LoadAsset(const std::string& path, Dictionary<std::string, shared<T>>& container)
+	inline shared<T> AssetManager::LoadAsset(const std::string& path, Dictionary<std::string, shared<T>>& constainer)
 	{
-		auto found = container.find(path);
-		if (found != container.end())
+		auto found = constainer.find(path);
+		if (found != constainer.end())
 		{
-			//return texture if found
 			return found->second;
 		}
+
 		shared<T> newAsset{ new T };
 		if (newAsset->loadFromFile(mRootDirectory + path))
 		{
-			container.insert({ path, newAsset });
+			constainer.insert({ path, newAsset });
 			return newAsset;
 		}
+
 		return shared<T> {nullptr};
 	}
-
 	template<typename T>
 	inline void AssetManager::CleanUniqueRef(Dictionary<std::string, shared<T>>& container)
 	{
@@ -67,5 +61,6 @@ namespace ly
 				++iter;
 			}
 		}
+
 	}
 }

@@ -2,13 +2,6 @@
 
 namespace ly
 {
-	Widget::Widget()
-		: mIsVisible{true},
-		mWidgetTransform{}
-	{
-
-	}
-
 	void Widget::NativeDraw(sf::RenderWindow& windowRef)
 	{
 		if (mIsVisible)
@@ -21,7 +14,6 @@ namespace ly
 		return false;
 	}
 
-	//Implementation of Tranformable Functions
 	void Widget::SetWidgetLocation(const sf::Vector2f& newLocation)
 	{
 		mWidgetTransform.setPosition(newLocation);
@@ -39,18 +31,30 @@ namespace ly
 		mIsVisible = newVisibility;
 	}
 
+	/*sf::Vector2f Widget::GetCenterPosition() const
+	{
+		sf::FloatRect bound = GetBound();
+		return sf::Vector2f{ bound.left + bound.width / 2.f, bound.top + bound.height / 2.f };
+	}*/
+
+	Widget::Widget()
+		: mIsVisible{ true },
+		mWidgetTransform{}
+	{
+
+	}
+
 	void Widget::Draw(sf::RenderWindow& windowRef)
 	{
+
 	}
 
 	void Widget::LocationUpdated(const sf::Vector2f& newLocation)
 	{
 
 	}
-
-	void Widget::RotationUpdated(const float newRotation)
+	void Widget::RotationUpdated(float newRotaion)
 	{
 
 	}
-	
 }

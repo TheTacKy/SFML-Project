@@ -6,6 +6,7 @@
 namespace ly
 {
 	class PlayerSpaceship;
+	class GameplayHUD;
 	class GameLevelOne : public World
 
 	{
@@ -14,6 +15,7 @@ namespace ly
 	private:
 		virtual void BeginPlay() override;
 		weak<PlayerSpaceship> mPlayerSpaceship;
+		weak<GameplayHUD> mGameplayHUD;
 		void PlayerSpaceshipDestroyed(Actor* destroyedPlayerSpaceship);
 		//void TimerCallBack_Test();
 		TimerHandle TimerHandle_Test;

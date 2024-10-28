@@ -2,7 +2,7 @@
 
 namespace ly
 {
-	void HUD::NativeInit(sf::RenderWindow& windowRef)
+	void HUD::NativeInit(const sf::RenderWindow& windowRef)
 	{
 		if (!mAlreadyInit)
 		{
@@ -17,13 +17,17 @@ namespace ly
 	}
 
 	HUD::HUD()
-		: mAlreadyInit{false}
+		: mAlreadyInit{ false }
+	{
+
+	}
+	void HUD::Init(const sf::RenderWindow& windowRef)
 	{
 
 	}
 
-	void HUD::Init(const sf::RenderWindow& winderRef)
+	void HUD::Tick(float deltaTime)
 	{
-		
+
 	}
 }

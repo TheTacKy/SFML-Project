@@ -2,14 +2,15 @@
 
 namespace ly
 {
-	unique<AssetManager> AssetManager::assetManager{nullptr};
+	unique<AssetManager> AssetManager::assetManager{ nullptr };
 
 	AssetManager& AssetManager::Get()
 	{
 		if (!assetManager)
 		{
-			assetManager = std::move(unique<AssetManager>{new AssetManager});
+			assetManager = unique<AssetManager>{ new AssetManager };
 		}
+
 		return *assetManager;
 	}
 
@@ -21,19 +22,6 @@ namespace ly
 	shared<sf::Font> AssetManager::LoadFont(const std::string& path)
 	{
 		return LoadAsset(path, mLoadedFontMap);
-	}
-
-	void AssetManager::UnloadTexture(const std::string& path)
-	{
-		auto found = mLoadedTextureMap.find(path);
-		if (found != mLoadedTextureMap.end())
-		{
-			if (found->second.unique())
-			{
-				LOG("unloading texture: %s", path.c_str());
-				mLoadedTextureMap.erase(found);
-			}
-		}
 	}
 
 	void AssetManager::CleanCycle()
@@ -51,5 +39,4 @@ namespace ly
 	{
 
 	}
-
 }
