@@ -11,14 +11,14 @@ namespace ly
 		mBarBack{ size },
 		mPercent{ initialPercent }
 	{
-		mBarFront.setFillColor(mForegroundColor);
-		mBarBack.setFillColor(mBackgroundColor);
+		mBarFront.setFillColor(foreGroundColor);
+		mBarBack.setFillColor(backgroundColor);
 	}
 	void ValueGuage::UpdateValue(float value, float maxValue)
 	{
 		if (maxValue == 0) return;
 		mPercent = value / maxValue;
-		std::string displayStr = std::to_string(value) + "/" + std::to_string((int)maxValue);
+		std::string displayStr = std::to_string((int)value) + "/" + std::to_string((int)maxValue);
 		mText.setString(displayStr);
 
 		sf::Vector2f barSize = mBarBack.getSize();
