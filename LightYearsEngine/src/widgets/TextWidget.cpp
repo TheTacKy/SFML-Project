@@ -13,10 +13,15 @@ namespace ly
 	{
 		mText.setString(newStr);
 	}
-
+  
 	void TextWidget::SetTextSize(unsigned int newSize)
 	{
 		mText.setCharacterSize(newSize);
+	}
+
+	sf::FloatRect TextWidget::GetBound() const
+	{
+		return mText.getGlobalBounds();
 	}
 
 

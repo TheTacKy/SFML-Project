@@ -31,11 +31,13 @@ namespace ly
 		mIsVisible = newVisibility;
 	}
 
-	/*sf::Vector2f Widget::GetCenterPosition() const
+
+
+	sf::Vector2f Widget::GetCenterPosition() const
 	{
 		sf::FloatRect bound = GetBound();
 		return sf::Vector2f{ bound.left + bound.width / 2.f, bound.top + bound.height / 2.f };
-	}*/
+	}
 
 	Widget::Widget()
 		: mIsVisible{ true },

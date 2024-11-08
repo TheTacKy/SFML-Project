@@ -23,7 +23,6 @@
 namespace ly
 {
 	GameLevelOne::GameLevelOne(Application* owningApp)
-
 		: World{owningApp}
 	{
 		
@@ -53,10 +52,12 @@ namespace ly
 	void GameLevelOne::InitGameStages()
 	{
 
-		AddStage(shared<UFOStage>{new UFOStage{ this }});
+		AddStage(shared<VanguardStage>{new VanguardStage{ this }});
 
 		AddStage(shared<WaitStage>{new WaitStage{ this, 5.f }});
-		AddStage(shared<VanguardStage>{new VanguardStage{ this }});
+		AddStage(shared<UFOStage>{new UFOStage{ this }});
+
+		
 
 		AddStage(shared<WaitStage>{new WaitStage{this, 10.f}});
 		AddStage(shared<TwinBladeStage>{new TwinBladeStage{ this }});
