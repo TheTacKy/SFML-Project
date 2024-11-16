@@ -4,6 +4,7 @@
 #include "widgets/TextWidget.h"
 #include "widgets/ValueGuage.h"
 #include "widgets/ImageWidget.h"
+#include "widgets/Button.h"
 namespace ly
 {
 	class Actor;
@@ -13,11 +14,15 @@ namespace ly
 		GameplayHUD();
 		virtual void Draw(sf::RenderWindow& windowRef) override;
 		virtual void Tick(float deltaTime) override;
+		virtual bool HandleEvent(const sf::Event& event) override;
+
 	private:
 		virtual void Init(const sf::RenderWindow& windowRef) override;
 
 		void RefreshHealthBar();
 		void ConnectPlayerStatus();
+
+		
 
 		void PlayerHealthUpdated(float amt, float currentHealth, float maxHealth);
 		void PlayerLifeCountUpdated(int amt);
@@ -31,6 +36,11 @@ namespace ly
 
 		ImageWidget mPlayerScoreIcon;
 		TextWidget mPlayerScoreText;
+
+		//TESTING
+		void TestButtonClick();
+		//TESTTIIIIIIIIIIING
+		Button TestButton;
 
 		sf::Color mHealthyHealthBarColor;
 		sf::Color mCriticalHealthBarColor;

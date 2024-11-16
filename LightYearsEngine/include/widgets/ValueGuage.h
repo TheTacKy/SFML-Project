@@ -24,6 +24,7 @@ namespace ly
 		virtual void LocationUpdated(const sf::Vector2f& newLocation) override;
 		virtual void RotationUpdated(float newRotation);
 		void CenterText();
+
 		shared<sf::Font> mTextFont;
 		sf::Text mText;
 
