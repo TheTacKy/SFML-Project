@@ -17,7 +17,6 @@ namespace ly
 		void TickInternal(float deltaTime);
 		void Render(sf::RenderWindow& window);
 
-
 		template<typename ActorType, typename... Args>
 		weak<ActorType> SpawnActor(Args... args);
 

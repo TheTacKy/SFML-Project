@@ -1,4 +1,5 @@
 #include "gameFramework/gameApplication.h"
+#include "Level/MainMenuLevel.h"
 #include "Level/GameLevelOne.h"
 #include "framework/AssetManager.h"
 #include "config.h"
@@ -15,7 +16,7 @@ namespace ly
 	{
 		//Calls the config file to set up Asset directory
 		AssetManager::Get().SetAssetRootDirectory(GetResourceDir());
-		weak<GameLevelOne> newWorld = LoadWorld<GameLevelOne>();
+		weak<MainMenuLevel> newWorld = LoadWorld<MainMenuLevel>();
 	}
 
 	

@@ -48,6 +48,7 @@ namespace ly
 
 		return a + (b - a) * alpha;
 	}
+
 	float RandomRange(float min, float max)
 	{
 		std::random_device rd;
@@ -56,6 +57,7 @@ namespace ly
 		std::uniform_real_distribution<float> distribution(min, max);
 		return distribution(gen);
 	}
+
 	sf::Vector2f RandomUnitVector()
 	{
 		float randomX = RandomRange(-1, 1);

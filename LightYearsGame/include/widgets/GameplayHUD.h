@@ -37,10 +37,7 @@ namespace ly
 		ImageWidget mPlayerScoreIcon;
 		TextWidget mPlayerScoreText;
 
-		//TESTING
-		void TestButtonClick();
-		//TESTTIIIIIIIIIIING
-		Button TestButton;
+		
 
 		sf::Color mHealthyHealthBarColor;
 		sf::Color mCriticalHealthBarColor;
