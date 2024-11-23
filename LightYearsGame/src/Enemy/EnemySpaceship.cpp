@@ -24,11 +24,13 @@ namespace ly
 		}
 	}
 
+	//updates Score
 	void EnemySpaceship::SetScoreAwardAmt(unsigned int amt)
 	{
 		mScoreAwardAmt = amt;
 	}
 
+	//handles rewards
 	void EnemySpaceship::SpawnReward()
 	{
 		if (mRewardFactories.size() == 0) return;
@@ -44,6 +46,7 @@ namespace ly
 		}
 	}
 
+	//Collision dmg
 	void EnemySpaceship::OnActorBeginOverlap(Actor* other)
 	{
 		Spaceship::OnActorBeginOverlap(other);
@@ -54,6 +57,8 @@ namespace ly
 		
 		
 	}
+
+	//when enemy dies spawn a reward and add AddScore
 	void EnemySpaceship::Blew()
 	{
 		SpawnReward();
