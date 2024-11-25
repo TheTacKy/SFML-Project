@@ -30,6 +30,15 @@ namespace ly
 		mScoreAwardAmt = amt;
 	}
 
+	void EnemySpaceship::SetRewardSpawnWeight(float weight)
+	{
+		if (weight < 0 || weight > 1)
+		{
+			return;
+		}
+		mRewardSpawnWeight = weight;
+	}
+
 	//handles rewards
 	void EnemySpaceship::SpawnReward()
 	{
