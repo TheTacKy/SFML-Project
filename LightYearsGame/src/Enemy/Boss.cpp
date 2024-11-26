@@ -7,13 +7,14 @@ namespace ly
 	Boss::Boss(World* world)
 		: EnemySpaceship{world, "SpaceShooterRedux/PNG/Enemies/boss.png" },
 		mSpeed{100.f},
+		mBaseSpeed{100.f},
 		mSwitchDistanceToEdge{100.f},
 		mBaseShooterLeft{ this, 1.0f, {50.f, -50.f} },
 		mBaseShooterRight{ this, 1.0f, {50.f, 50.f} },
-		mThreeWayShooter{ this, 4.f, {100.f, 0} },
+		mThreeWayShooter{ this, 6.f, {100.f, 0} },
 		//mThreeWayShooterRight{ this, 4.f, {100.f, 0} },
-		mFrontalWiperLeft{ this, 5.f, {80.f, -100.f} },
-		mFrontalWiperRight{ this, 5.f, {80.f, 100.f} },
+		mFrontalWiperLeft{ this, 7.f, {80.f, -100.f} },
+		mFrontalWiperRight{ this, 7.f, {80.f, 100.f} },
 		mFinalStageShooterLeft{ this, 0.3f, {50.f, -150.f} },
 		mFinalStageShooterRight{ this, 0.3f, {50.f, 150.f} },
 		mStage{1}
@@ -44,7 +45,7 @@ namespace ly
 	{
 		EnemySpaceship::BeginPlay();
 		HealthComponent& healthComp = GetHealthComp();
-		healthComp.SetInitialHealth(200.f, 200.f);
+		healthComp.SetInitialHealth(3000.f, 3000.f);
 		healthComp.onHealthChanged.BindAction(GetWeakRef(), &Boss::HealthChanged);
 	}
 	
@@ -87,6 +88,7 @@ namespace ly
 		mFrontalWiperLeft.SetCurrentLevel(mStage);
 		mFrontalWiperRight.SetCurrentLevel(mStage);
 		mThreeWayShooter.SetCurrentLevel(mStage);
+		mSpeed = mStage * mBaseSpeed;
 		
 	}
 

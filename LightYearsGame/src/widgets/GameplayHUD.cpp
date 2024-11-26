@@ -15,12 +15,21 @@ namespace ly
 		mHealthyHealthBarColor{128, 255, 128, 255},
 		mCriticalHealthBarColor{250, 0, 0, 255},
 		mCriticalThreshold{0.3},
-		mWidgetSpacing{10}
+		mWidgetSpacing{10},
+		mWinLoseText{""},
+		mFinalScoreText{""},
+		mRestartButton{"Restart"},
+		mQuitButton{"Quit"}
 
 	{
 		mFramerateText.SetTextSize(30);
 		mPlayerLifeText.SetTextSize(20);
 		mPlayerScoreText.SetTextSize(20);
+
+		mWinLoseText.SetVisibility(false);
+		mFinalScoreText.SetVisibility(false);
+		mRestartButton.SetVisibility(false);
+		mQuitButton.SetVisibility(false);
 	}
 
 	void GameplayHUD::Draw(sf::RenderWindow& windowRef)
@@ -118,6 +127,11 @@ namespace ly
 	void GameplayHUD::PlayerSpaceshipDestroyed(Actor* actor)
 	{
 		RefreshHealthBar();
+	}
+
+	void GameplayHUD::GameFinished(bool playerWon)
+	{
+
 	}
 	
 }

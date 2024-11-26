@@ -44,5 +44,12 @@ namespace ly
 		float mCriticalThreshold;
 
 		float mWidgetSpacing;
+
+		TextWidget mWinLoseText;
+		TextWidget mFinalScoreText;
+		Button mRestartButton;
+		Button mQuitButton;
+
+		void GameFinished(bool playerWon);
 	};
 }
