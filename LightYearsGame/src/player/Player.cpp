@@ -14,9 +14,10 @@ namespace ly
 		if (mLifeCount > 0)
 		{
 			--mLifeCount;
+			onLifeChange.Broadcast(mLifeCount);
 			auto windowSize = world->GetWindowSize();
 			mCurrentPlayerSpaceship = world->SpawnActor<PlayerSpaceship>();
-			mCurrentPlayerSpaceship.lock()->SetActorLocation(sf::Vector2f(windowSize.x/2.f, windowSize.y));
+			mCurrentPlayerSpaceship.lock()->SetActorLocation(sf::Vector2f(windowSize.x/2.f, windowSize.y - 200));
 			mCurrentPlayerSpaceship.lock()->SetActorRotation(-90.f);
 			return mCurrentPlayerSpaceship;
 		} 

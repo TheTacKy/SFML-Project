@@ -1,12 +1,13 @@
 #include "Level/GameLevelOne.h"
 
-#include "player/PlayerSpaceship.h"
-#include "player/PlayerManager.h"
-
+#include "framework/Application.h"
 #include "framework/AssetManager.h"
 #include "framework/World.h"
 #include "framework/Actor.h"
 #include "framework/TimerManager.h"
+
+#include "player/PlayerSpaceship.h"
+#include "player/PlayerManager.h"
 
 #include "Enemy/Vanguard.h"
 #include "Enemy/VanguardStage.h"
@@ -30,12 +31,20 @@ namespace ly
 		
 	}
 
+	void GameLevelOne::AllGameStageFinished()
+	{
+		mGameplayHUD.lock()->GameFinished(true);
+	}
+
 	void GameLevelOne::BeginPlay()
 	{
+
 		Player& newPlayer = PlayerManager::Get().CreateNewPlayer();
 		mPlayerSpaceship = newPlayer.SpawnSpaceship(this);
 		mPlayerSpaceship.lock()->onActorDestroyed.BindAction(GetWeakRef(), &GameLevelOne::PlayerSpaceshipDestroyed);
 		mGameplayHUD = SpawnHUD<GameplayHUD>();
+		mGameplayHUD.lock()->onQuitButtonClicked.BindAction(GetWeakRef(), &GameLevelOne::QuitGame);
+		mGameplayHUD.lock()->onRestartButtonClicked.BindAction(GetWeakRef(), &GameLevelOne::Restart);
 	}
 
 	void GameLevelOne::PlayerSpaceshipDestroyed(Actor* destroyedPlayerSpaceship)
@@ -53,7 +62,6 @@ namespace ly
 
 	void GameLevelOne::InitGameStages()
 	{
-		AddStage(shared<BossStage>{new BossStage{this}});
 		//AddStage(shared<WaitStage>{new WaitStage{ this, 5.f }});
 		AddStage(shared<VanguardStage>{new VanguardStage{ this }});
 
@@ -66,10 +74,22 @@ namespace ly
 		AddStage(shared<UFOStage>{new UFOStage{ this }});
 
 		AddStage(shared<ChaosStage>{new ChaosStage{ this }});
+		AddStage(shared<BossStage>{new BossStage{this}});
+	}
+
+	void GameLevelOne::QuitGame()
+	{
+		GetApplication()->QuitApplication();
+	}
+
+	void GameLevelOne::Restart()
+	{
+		PlayerManager::Get().Reset();
+		GetApplication()->LoadWorld<GameLevelOne>();
 	}
 
 	void GameLevelOne::GameOver()
 	{
-		LOG("GAME OVER! =============================================================");
+		mGameplayHUD.lock()->GameFinished(false);
 	}
 }

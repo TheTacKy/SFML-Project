@@ -105,7 +105,6 @@ namespace ly
 				{
 					ButtonUp();
 				}
-					handled = true;
 			}
 		}
 		return handled || Widget::HandleEvent(windowEvent);

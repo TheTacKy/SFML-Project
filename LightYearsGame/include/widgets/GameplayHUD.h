@@ -16,6 +16,9 @@ namespace ly
 		virtual void Tick(float deltaTime) override;
 		virtual bool HandleEvent(const sf::Event& event) override;
 
+		void GameFinished(bool playerWon);
+		Delegate<> onRestartButtonClicked;
+		Delegate<> onQuitButtonClicked;
 	private:
 		virtual void Init(const sf::RenderWindow& windowRef) override;
 
@@ -28,6 +31,11 @@ namespace ly
 		void PlayerLifeCountUpdated(int amt);
 		void PlayerScoreUpdated(int newScore);
 		void PlayerSpaceshipDestroyed(Actor* actor);
+
+		void RestartButtonClicked();
+		void QuitButtonClicked();
+
+
 		TextWidget mFramerateText;
 		ValueGuage mPlayerHealthBar;
 
@@ -50,6 +58,6 @@ namespace ly
 		Button mRestartButton;
 		Button mQuitButton;
 
-		void GameFinished(bool playerWon);
+		sf::Vector2u mWindowSize;
 	};
 }
