@@ -188,6 +188,11 @@ namespace ly {
 		return GetTeamID() != other->GetTeamID();
 	}
 
+	void Actor::SetTextureRepeated(bool repeated)
+	{
+		mTexture->setRepeated(true);
+	}
+
 	void Actor::InitializePhysics()
 	{
 		if (!mPhysicsBody)
