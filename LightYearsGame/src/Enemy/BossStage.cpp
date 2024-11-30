@@ -1,6 +1,8 @@
 #include "Enemy/BossStage.h"
 #include "Enemy/Boss.h"
 #include "framework/World.h"
+#include "weapon/BulletShooter.h"
+
 namespace ly
 {
 	BossStage::BossStage(World* world)

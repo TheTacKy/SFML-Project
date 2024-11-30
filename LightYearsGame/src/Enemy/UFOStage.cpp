@@ -2,6 +2,8 @@
 #include "Enemy/UFO.h"
 #include "framework/MathUtility.h"
 #include "framework/World.h"
+#include "weapon/BulletShooter.h"
+
 namespace ly
 {
 	UFOStage::UFOStage(World* world)
