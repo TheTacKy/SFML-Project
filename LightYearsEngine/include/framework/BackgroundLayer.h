@@ -5,6 +5,7 @@ namespace ly
 {
 	class BackgroundLayer : public Actor
 	{
+public:
 		BackgroundLayer(World* owningWorld, 
 			const List<std::string>& assetPaths = {},
 			const sf::Vector2f& minVel = sf::Vector2f{0.f,50.f},

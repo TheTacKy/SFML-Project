@@ -166,16 +166,20 @@ namespace ly
 			sf::Sprite& sprite = mSprites[i];
 			sf::Vector2f& vel = mVelocities[i];
 
+			
 			sprite.setPosition(sprite.getPosition() + vel * deltaTime);
+
 			if (IsSpriteOffScreen(sprite))
 			{
+				RandomSpriteTexture(sprite);
 				RandomSpriteTransform(sprite);
+				float velX = RandomRange(mMinVelocity.x, mMaxVelocity.x);
+				float velY = RandomRange(mMinVelocity.y, mMaxVelocity.y);
+				mVelocities[i] = sf::Vector2f{ velX, velY };
 
 			}
 		}
 	}
-
-
 
 	shared<sf::Texture> BackgroundLayer::GetRandomTexture() const
 	{
