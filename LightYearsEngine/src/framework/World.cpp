@@ -70,6 +70,7 @@ namespace ly {
 		RenderHUD(window);
 	}
 
+
 	sf::Vector2u World::GetWindowSize() const
 	{
 		return mOwningApp->GetWindowSize();

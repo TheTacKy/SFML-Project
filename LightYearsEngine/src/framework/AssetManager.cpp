@@ -19,6 +19,7 @@ namespace ly
 		return LoadAsset(path, mLoadedTextureMap);
 	}
 
+
 	shared<sf::Font> AssetManager::LoadFont(const std::string& path)
 	{
 		return LoadAsset(path, mLoadedFontMap);

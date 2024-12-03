@@ -10,7 +10,7 @@ namespace ly
 		virtual void Tick(float deltaTime) override;
 	private:
 		sf::Vector2f mMovingVelocity;
-		float mLeftShift;
+		float mLeftShift; 
 		float mTopShift;
 	};
 }

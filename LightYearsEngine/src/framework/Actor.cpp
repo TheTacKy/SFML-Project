@@ -23,6 +23,7 @@ namespace ly {
 	Actor::~Actor() {
 		LOG("Actor Destroyed");
 	}
+
 	void Actor::BeginPlayInternal()
 	{
 		if (!mHasBeganPlay) {
@@ -30,6 +31,7 @@ namespace ly {
 			BeginPlay();
 		}
 	}
+
 	void Actor::TickInternal(float deltaTime)
 	{
 		if (!IsPendingDestroy()) {

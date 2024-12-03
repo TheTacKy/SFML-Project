@@ -3,6 +3,8 @@
 #include "Enemy/Vanguard.h"
 #include "Enemy/TwinBlade.h"
 #include "weapon/BulletShooter.h"
+
+#include "framework/MathUtility.h"
 namespace ly
 {
 	VanguardStage::VanguardStage(World* world)
@@ -31,6 +33,13 @@ namespace ly
 		mRightSpawnLoc = sf::Vector2f(windowSize.x - mSpawnDistanceToEdge, -100.f);
 
 		SwitchRow();
+	}
+
+	sf::Vector2f VanguardStage::RandomSpawnLocation()
+	{
+		auto windowSize = GetWorld()->GetWindowSize();
+		//float velX = RandomRange();
+		return sf::Vector2f({});
 	}
 
 	void VanguardStage::StageFinished()

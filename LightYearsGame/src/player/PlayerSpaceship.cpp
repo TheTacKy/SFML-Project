@@ -10,8 +10,8 @@ namespace ly
 	PlayerSpaceship::PlayerSpaceship(World* owningWorld, const std::string& path)
 		: Spaceship{ owningWorld, path },
 		mMoveInput{},
-		mSpeed{200.f},
-		mShooter{ new BulletShooter{this, 1.f, {50.f, 0.f} } },
+		mSpeed{170.f},
+		mShooter{ new BulletShooter{this, .6f, {50.f, 0.f} } },
 		mInvulnerableTime{2.f},
 		mInvulnerable{true},
 		mInvulnerableFlashInterval{0.5f},

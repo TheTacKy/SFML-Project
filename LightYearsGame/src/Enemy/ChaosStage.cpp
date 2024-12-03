@@ -13,7 +13,7 @@ namespace ly
 		mMinSpawnInterval{0.8f},
 		mSpawnIntervalDecrement{0.5f},
 		mSpawnIntervalDecrementInterval{5.f},
-		mStageDuration{120.f}
+		mStageDuration{60.f}
 	{
 	}
 
