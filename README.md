@@ -4,6 +4,9 @@
 
 This is a 2d Alien Spaceship shooter game. You are a player Spaceship with a noble goal to defeat the alien invasion and boss.
 
+![alt text](<Screenshot 2024-12-18 125227.png>)
+![alt text](<Screenshot 2024-12-18 125734.png>)
+![alt text](<Screenshot 2024-12-18 125912.png>)
 Built using:
 * [SFML](https://www.sfml-dev.org/) 
 * [Box2D](https://box2d.org/)
@@ -11,20 +14,20 @@ Built using:
   
 Build:
 
-Ensure yo uhave CMake version 3.16 and gcc/g++ installed
+Ensure yo uhave CMake version 3.30 and gcc/g++ installed
 This game works on Windows and maybe Mac
 
 1, Open the folder with command prompt, and configure with cmake:
 
-cmake -S . -B build -G
+cmake -S . -B build
 
 2, Build with cmake:
 
 cmake --build build
 
-3, open the game:
+3, open the game in Debug folder:
 
-./build/LightYearsGame/LightYearsGame.exe
+./build/LightYearsGame/Debug/LightYearsGame.exe
 
 ### Components
 LightYearsEngine

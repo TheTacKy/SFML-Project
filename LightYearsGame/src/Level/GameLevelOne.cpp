@@ -70,11 +70,15 @@ namespace ly
 		AddStage(shared<TwinBladeStage>{new TwinBladeStage{ this }});
 
 		AddStage(shared<HexagonStage>{new HexagonStage{ this }});
+		AddStage(shared<WaitStage>{new WaitStage{ this, 5.f }});
 
 		AddStage(shared<UFOStage>{new UFOStage{ this }});
 		AddStage(shared<ChaosStage>{new ChaosStage{ this }});
+		AddStage(shared<WaitStage>{new WaitStage{ this, 10.f }});
 
 		AddStage(shared<BossStage>{new BossStage{this}});
+		AddStage(shared<WaitStage>{new WaitStage{ this, 5.f }});
+
 	}
 
 	void GameLevelOne::QuitGame()
