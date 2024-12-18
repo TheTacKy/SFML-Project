@@ -4,9 +4,7 @@
 
 This is a 2d Alien Spaceship shooter game. You are a player Spaceship with a noble goal to defeat the alien invasion and boss.
 
-<image src="LightYearsGame/assets/Screenshot 2024-12-18 125227.png" width=200>
-<image src="LightYearsGame/assets/Screenshot 2024-12-18 125734.png" width=200>
-<image src="LightYearsGame/assets/Screenshot 2024-12-18 125912.png" width=200>
+<image src="LightYearsGame/assets/Screenshot 2024-12-18 125227.png" width=200><image src="LightYearsGame/assets/Screenshot 2024-12-18 125734.png" width=200><image src="LightYearsGame/assets/Screenshot 2024-12-18 125912.png" width=200>
 
 Built using:
 * [SFML](https://www.sfml-dev.org/) 
