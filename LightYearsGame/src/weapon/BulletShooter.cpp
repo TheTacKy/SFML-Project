@@ -35,6 +35,10 @@ namespace ly
 	{
 		mCooldownClock.restart();
 	}
+	void BulletShooter::SetDamage(float newDamage)
+	{
+
+	}
 	void BulletShooter::SetBulletTexturePath(const std::string& BulletTexturePath)
 	{
 		mBulletTexturePath = BulletTexturePath;

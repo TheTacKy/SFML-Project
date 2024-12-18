@@ -10,7 +10,7 @@ namespace ly
 	VanguardStage::VanguardStage(World* world)
 		: GameStage{world},
 		mSpawnInterval{1.5f},
-		mSwitchInterval{5.f},
+		mSwitchInterval{2.f},
 
 		mSpawnDistanceToEdge{100.f},
 		mLeftSpawnLoc{0.0f, 0.0f},
@@ -35,11 +35,13 @@ namespace ly
 		SwitchRow();
 	}
 
-	sf::Vector2f VanguardStage::RandomSpawnLocation()
+	sf::Vector2f VanguardStage::GetRandomSpawnLocationTop() const
 	{
 		auto windowSize = GetWorld()->GetWindowSize();
-		//float velX = RandomRange();
-		return sf::Vector2f({});
+		float spawnX = RandomRange(100.f, windowSize.x - 100.f);
+		float spawnY = -100.f;
+
+		return { spawnX, spawnY };
 	}
 
 	void VanguardStage::StageFinished()
@@ -52,7 +54,7 @@ namespace ly
 	void VanguardStage::SpawnVanguard()
 	{
 		weak<Vanguard> newVanguard = GetWorld()->SpawnActor<Vanguard>();
-		newVanguard.lock()->SetActorLocation(mSpawnLoc);
+		newVanguard.lock()->SetActorLocation(GetRandomSpawnLocationTop());
 		++mCurrentRowVanguardCount;
 		if (mCurrentRowVanguardCount == mVanguardsPerRow)
 		{

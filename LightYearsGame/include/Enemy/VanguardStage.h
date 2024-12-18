@@ -30,7 +30,7 @@ namespace ly
 		int mVanguardsPerRow;
 		int mCurrentRowVanguardCount;
 
-		sf::Vector2f RandomSpawnLocation();
+		sf::Vector2f GetRandomSpawnLocationTop() const;
 		virtual void StageFinished() override;
 		void SpawnVanguard();
 		void SwitchRow();

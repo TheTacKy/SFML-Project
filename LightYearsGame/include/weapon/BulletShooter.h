@@ -16,6 +16,7 @@ namespace ly
 		virtual bool IsOnCooldown() const override;
 		virtual void IncrementLevel(int amt = 1) override;
 		void ResetCooldown();
+		void SetDamage(float newDamage);
 
 		void SetBulletTexturePath(const std::string& BulletTexturePath);
 	private:

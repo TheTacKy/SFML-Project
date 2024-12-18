@@ -4,9 +4,10 @@
 
 This is a 2d Alien Spaceship shooter game. You are a player Spaceship with a noble goal to defeat the alien invasion and boss.
 
-![alt text](<Screenshot 2024-12-18 125227.png>)
-![alt text](<Screenshot 2024-12-18 125734.png>)
-![alt text](<Screenshot 2024-12-18 125912.png>)
+
+<image src="assets\Screenshot 2024-12-18 125227.png" width=200>
+<image src="assets\Screenshot 2024-12-18 125734.png" width=200>
+<image src="assets\Screenshot 2024-12-18 125912.png" width=200>
 Built using:
 * [SFML](https://www.sfml-dev.org/) 
 * [Box2D](https://box2d.org/)
